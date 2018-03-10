@@ -53,7 +53,7 @@ class ENDataCrawl:
             key = item["code"][:6]
             url = "http://quotes.money.163.com/trade/lsjysj_" + key + ".html?year=" + year + "&season=" + season
             print url
-            # 连接失败后自动重连(最多8次)
+            # 请求失败后重新请求(最多8次)
             max_try = 8
             for tries in range(max_try):
                 try:
@@ -88,6 +88,7 @@ class ENDataCrawl:
                 }
                 if price["cur_timer"] not in timer_list:
                     self.dm.add_tk_item(key, price)
+            # 在配置较低的机器上运行最好加上这一句
             gc.collect()
             print key, "success"
             add_info_logs("parse_comp", key)
