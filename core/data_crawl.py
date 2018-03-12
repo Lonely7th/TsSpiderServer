@@ -88,7 +88,7 @@ class ENDataCrawl:
                 }
                 if price["cur_timer"] not in timer_list:
                     self.dm.add_tk_item(key, price)
-            # 在配置较低的机器上运行最好加上这一句
+            # 在配置较低的机器上运行应该加上这一句
             gc.collect()
             print key, "success"
             add_info_logs("parse_comp", key)

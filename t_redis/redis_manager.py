@@ -44,7 +44,7 @@ class RedisManager:
                 code = item["code"][:6]
                 _result = dm.find_by_id(item["code"])
                 sorted_result = sorted(_result["price_list"], cmp=cmp_datetime, key=operator.itemgetter("cur_timer"))
-                self.r.set(code, sorted_result[:100])
+                self.r.set(code, sorted_result)
             except Exception:
                 add_error_logs("redis_error", "501", item["code"])
                 continue
