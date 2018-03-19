@@ -25,19 +25,19 @@ self.parse_pager(content.content, item["code"])
 考虑到网络请求可能会失败，我们在请求失败时设置多次重新请求(最多8次)，如果多次请求后仍然失败，则将请求的相关内容存储到error_logs中：
 
 ```
-  # 请求失败后重新请求(最多8次)
-        max_try = 8
-        for tries in range(max_try):
-            try:
-                content = requests.get(url)
-                self.parse_pager(content.content, item["code"])
-                break
-            except Exception:
-                if tries < (max_try - 1):
-                    sleep(2)
-                    continue
-                else:
-                    add_error_logs("crawl_error", "501", key)
+# 请求失败后重新请求(最多8次)
+  max_try = 8
+  for tries in range(max_try):
+      try:
+          content = requests.get(url)
+          self.parse_pager(content.content, item["code"])
+          break
+      except Exception:
+          if tries < (max_try - 1):
+              sleep(2)
+              continue
+          else:
+              add_error_logs("crawl_error", "501", key)
 ```
 
 获取到页面内容后，我们先来分析页面结构（图1），我们需要的数据大概是以这样的格式存在的：tr标签表示股票某一天的行情，tr标签下的td标签表示当前行情的详细数据：
@@ -55,8 +55,8 @@ data = [x.string for x in item.select("td")]
 ```
 每次解析页面时，我们都会从数据库中取出当前股票已经存在的数据，用于判断待插入数据是否已经存在数据库中。这样做可以及时补全数据，并且避免数据重复插入。
 ```
- if price["cur_timer"]not in timer_list:
-     self.dm.add_tk_item(key, price)
+if price["cur_timer"]not in timer_list:
+    self.dm.add_tk_item(key, price)
 ```
 由于股票数据是频繁变动的，这就要求我们定时对数据进行更新，这里我们编写一个定时器来实现定时更新数据的功能：
 ```
