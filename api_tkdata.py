@@ -46,3 +46,8 @@ def myapp(environ, start_response):
 
 def start_api_tkdata():
     WSGIServer(myapp, bindAddress=(mod_config.get_config("server", "server_host"), int(mod_config.get_config("server", "tk_data_port")))).run()
+
+
+if __name__ == "__main__":
+    start_api_tkdata()
+    pass
