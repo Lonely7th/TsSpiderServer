@@ -9,6 +9,7 @@ from time import sleep
 import gc
 import bs4
 from datetime import datetime
+import imp
 
 import requests
 import sys
@@ -32,7 +33,7 @@ def get_cur_season():
 
 class ENDataCrawl:
     def __init__(self):
-        reload(sys)
+        imp.reload(sys)
         sys.setdefaultencoding('utf8')
         self.dm = DBManager("tk_details")
         self.headers = {
@@ -52,7 +53,7 @@ class ENDataCrawl:
         for item in code_list[:50]:
             key = item["code"][:6]
             url = "http://quotes.money.163.com/trade/lsjysj_" + key + ".html?year=" + year + "&season=" + season
-            print url
+            print(url)
             # 请求失败后重新请求(最多8次)
             max_try = 8
             for tries in range(max_try):
@@ -90,7 +91,7 @@ class ENDataCrawl:
                     self.dm.add_tk_item(key, price)
             # 在配置较低的机器上运行应该加上这一句
             gc.collect()
-            print key, "success"
+            print(key, "success")
             add_info_logs("parse_comp", key)
         except Exception:
             add_error_logs("parse_error", "501", key)

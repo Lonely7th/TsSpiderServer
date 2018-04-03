@@ -1,3 +1,4 @@
+bson==0.5.2
 pymongo==3.5.1
 selenium==3.7.0
 bs4==4.6.0
@@ -5,3 +6,4 @@ requests==2.18.4
 redis==2.10.6
 uwsgi==2.0.17
 flup==1.0.2
+ConfigParser==3.5.0
