@@ -6,4 +6,3 @@ requests==2.18.4
 redis==2.10.6
 uwsgi==2.0.17
 flup==1.0.2
-ConfigParser==3.5.0

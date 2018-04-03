@@ -34,7 +34,7 @@ def fun_timer():
     print(cur_time)
     hour = str(cur_time).split(":")[0]
     minute = str(cur_time).split(":")[1]
-    if (hour == "16" or hour == "24") and minute == "00":
+    if (hour == "16" or hour == "02") and minute == "00":
         dc = ENDataCrawl()
         dc.start_crawl()
         # 爬虫业务完成后同步数据到redis
