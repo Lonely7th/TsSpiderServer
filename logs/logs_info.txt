@@ -70,3 +70,9 @@
 {'tag': 'parse_comp', 'content': '000009.XSHE', 'created_time': '2018-04-04 22:21:18.993035'}
 {'tag': 'parse_comp', 'content': '000010.XSHE', 'created_time': '2018-04-04 22:21:19.360898'}
 {'tag': 'parse_comp', 'content': '000011.XSHE', 'created_time': '2018-04-04 22:21:19.760251'}
+{'tag': 'redis_start', 'content': '-开始同步缓存-', 'created_time': '2018-04-04 22:28:11.162915'}
+{'tag': 'redis_start', 'content': '-开始同步缓存-', 'created_time': '2018-04-04 22:29:13.784535'}
+{'tag': 'redis_close', 'content': '-结束同步缓存-', 'created_time': '2018-04-04 22:29:26.808702'}
+{'tag': 'redis_start', 'content': '-开始同步缓存-', 'created_time': '2018-04-04 22:49:28.706673'}
+{'tag': 'redis_start', 'content': '-开始同步缓存-', 'created_time': '2018-04-04 23:26:22.323123'}
+{'tag': 'redis_close', 'content': '-结束同步缓存-', 'created_time': '2018-04-04 23:26:33.154802'}

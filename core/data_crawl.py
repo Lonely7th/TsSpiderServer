@@ -95,6 +95,6 @@ class ENDataCrawl:
 
 if __name__ == '__main__':
     dc = ENDataCrawl()
-    for _season in range(1, 5):
-        dc.get_url("2016", str(_season))
-    # dc.start_crawl()
+    # for _season in range(1, 5):
+    #     dc.get_url("2016", str(_season))
+    dc.start_crawl()

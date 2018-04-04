@@ -28,6 +28,10 @@ def cmp_datetime(a, b):
         return 0
 
 
+def cmp_datatime_02(item):
+    return datetime.datetime.strptime(item["cur_timer"], "%Y-%m-%d")
+
+
 class RedisManager:
     def __init__(self):
         # host是redis主机，需要redis服务端和客户端都启动
@@ -43,7 +47,7 @@ class RedisManager:
             try:
                 code = item["code"][:6]
                 _result = dm.find_by_id(item["code"])
-                sorted_result = sorted(_result["price_list"], cmp=cmp_datetime, key=operator.itemgetter("cur_timer"))
+                sorted_result = sorted(_result["price_list"], key=lambda x: cmp_datatime_02(x))
                 self.r.set(code, sorted_result)
             except Exception:
                 add_error_logs("redis_error", "501", item["code"])
