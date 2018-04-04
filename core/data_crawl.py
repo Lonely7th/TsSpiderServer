@@ -9,10 +9,8 @@ from time import sleep
 import gc
 import bs4
 from datetime import datetime
-import imp
 
 import requests
-import sys
 from logs.logs_manager import add_error_logs, add_info_logs
 from mongo_db.mongodb_manager import DBManager
 
@@ -33,8 +31,6 @@ def get_cur_season():
 
 class ENDataCrawl:
     def __init__(self):
-        imp.reload(sys)
-        sys.setdefaultencoding('utf8')
         self.dm = DBManager("tk_details")
         self.headers = {
             "User-Agent": ":Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
@@ -50,7 +46,7 @@ class ENDataCrawl:
 
     def get_url(self, year, season):
         code_list = self.dm.find_by_id("")
-        for item in code_list[:50]:
+        for item in code_list:
             key = item["code"][:6]
             url = "http://quotes.money.163.com/trade/lsjysj_" + key + ".html?year=" + year + "&season=" + season
             print(url)
@@ -99,4 +95,6 @@ class ENDataCrawl:
 
 if __name__ == '__main__':
     dc = ENDataCrawl()
-    dc.start_crawl()
+    for _season in range(1, 5):
+        dc.get_url("2016", str(_season))
+    # dc.start_crawl()
