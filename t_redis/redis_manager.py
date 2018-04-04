@@ -47,7 +47,7 @@ class RedisManager:
             try:
                 code = item["code"][:6]
                 _result = dm.find_by_id(item["code"])
-                sorted_result = sorted(_result["price_list"], key=lambda x: cmp_datatime_02(x))
+                sorted_result = sorted(_result["price_list"], key=lambda x: cmp_datatime_02(x), reverse=True)
                 self.r.set(code, sorted_result)
             except Exception:
                 add_error_logs("redis_error", "501", item["code"])

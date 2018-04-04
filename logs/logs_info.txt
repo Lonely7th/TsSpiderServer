@@ -76,3 +76,9 @@
 {'tag': 'redis_start', 'content': '-开始同步缓存-', 'created_time': '2018-04-04 22:49:28.706673'}
 {'tag': 'redis_start', 'content': '-开始同步缓存-', 'created_time': '2018-04-04 23:26:22.323123'}
 {'tag': 'redis_close', 'content': '-结束同步缓存-', 'created_time': '2018-04-04 23:26:33.154802'}
+{'tag': 'redis_start', 'content': '-开始同步缓存-', 'created_time': '2018-04-04 23:43:13.542106'}
+{'tag': 'redis_close', 'content': '-结束同步缓存-', 'created_time': '2018-04-04 23:43:21.891666'}
+{'tag': 'redis_start', 'content': '-开始同步缓存-', 'created_time': '2018-04-04 23:43:35.592924'}
+{'tag': 'redis_close', 'content': '-结束同步缓存-', 'created_time': '2018-04-04 23:43:44.825071'}
+{'tag': 'redis_start', 'content': '-开始同步缓存-', 'created_time': '2018-04-04 23:44:30.776627'}
+{'tag': 'redis_close', 'content': '-结束同步缓存-', 'created_time': '2018-04-04 23:44:39.655537'}
