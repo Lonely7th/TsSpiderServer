@@ -16,7 +16,6 @@ from t_redis.redis_manager import RedisManager
 def myapp(environ, start_response):
     str_query = str(environ["QUERY_STRING"])
     script_filename = str(environ["SCRIPT_FILENAME"])
-    print(script_filename)
     result_json = {"code": "200", "data": ""}
     if script_filename.split("/")[-1] == "tkdata":
         if str_query == "":
