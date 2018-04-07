@@ -8,10 +8,11 @@ __mtime__ = '2017/12/21'
 import multiprocessing
 import threading
 import datetime
-from time import sleep
 
 from api_tkdata import start_api_tkdata
+from core.c_strategy.strategy_3 import TsStrategy3
 from core.data_crawl import ENDataCrawl
+from core.wmacd_utils import WmacdUtils
 from t_redis.redis_manager import RedisManager
 
 time_interval = 60
@@ -35,13 +36,18 @@ def fun_timer():
     hour = str(cur_time).split(":")[0]
     minute = str(cur_time).split(":")[1]
     if (hour == "16" or hour == "00") and minute == "00":
+        # 开始基础数据爬虫业务
         dc = ENDataCrawl()
         dc.start_crawl()
-        # 爬虫业务完成后同步数据到redis
-        sleep(time_interval)
+        # 开始指标数据计算业务
+        wu = WmacdUtils()
+        wu.update_w_macd()
+        # 同步基础数据到redis
         rm = RedisManager()
         rm.update_data()
-        # 计算w_macd并同步到redis
+        # 同步指标数据到redis
+        st3 = TsStrategy3()
+        st3.update_redis(datetime.datetime.now().date())
     global timer
     timer = threading.Timer(time_interval, fun_timer)
     timer.start()

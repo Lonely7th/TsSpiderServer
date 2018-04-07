@@ -35,10 +35,17 @@ class DBManager:
         需要注意的是Mongo中不需要事先建立表，插入数据的同时直接根据所传入字典对象的内容生成表
         """
         post['created_time'] = created_time
-        # 指定将数据添加到blog下的post表
         return self.table.insert_one(post)
 
-    def find_by_id(self, tk_code, request={}):
+    def add_tk_item(self, tk_code, price_item):
+        """
+        向详情列表中插入一条数据
+        在update_one函数中，通过第一个参数查找更新对象，通过第二个参数对查找到的对象进行更新
+        下面语句的含义是对指定ID的数据的number字段加上一个number值,通过 $inc 实现
+        """
+        return self.table.update_one({'code': tk_code}, {"$push": {"price_list": price_item}})
+
+    def find_by_id(self, tk_code="", request={}):
         """
         通过tk_code查找数据
         """
@@ -49,13 +56,8 @@ class DBManager:
             # 数据量较大时避免CursorNotFoundException
             return self.table.find({}, no_cursor_timeout=True)
 
-    def add_tk_item(self, tk_code, price_item):
-        """
-        向详情列表中插入一条数据
-        在update_one函数中，通过第一个参数查找更新对象，通过第二个参数对查找到的对象进行更新
-        下面语句的含义是对指定ID的数据的number字段加上一个number值,通过 $inc 实现
-        """
-        return self.table.update_one({'code': tk_code}, {"$push": {"price_list": price_item}})
+    def update_tk_def(self, keys, values):
+        return self.table.update(keys, {"$set": values})
 
     def update_tk_item(self, tk_code, update_item):
         """

@@ -16,8 +16,7 @@ from t_redis.redis_manager import RedisManager
 def fun_tk_data(str_query):
     result_json = {"code": "200", "data": ""}
     if str_query == "" or "code=" not in str_query:
-        result_json["code"] = "500"
-        return "500", result_json
+        return {"code": "500", "data": ""}
     else:
         list_query = str_query.split("=")
         for i in range(len(list_query)):
@@ -26,23 +25,37 @@ def fun_tk_data(str_query):
                 result = rm.get_data(str(list_query[i + 1]))
                 result_json["data"] = str(result).replace("u'", "'")
                 result_json["tk_code"] = str(list_query[i + 1])
-                return "200", result_json
-    return "200", result_json
+                return result_json
+    return result_json
 
 
-def fun_wm_data():
-    pass
+def fun_wm_data(str_query):
+    result_json = {"code": "200", "data": ""}
+    if str_query == "" or "date=" not in str_query:
+        return {"code": "500", "data": ""}
+    else:
+        list_query = str_query.split("=")
+        for i in range(len(list_query)):
+            if list_query[i] == "date":
+                rm = RedisManager()
+                result = rm.get_data(str(list_query[i + 1]))
+                result_json["date"] = str(list_query[i + 1])
+                result_json["data"] = str(result).replace("u'", "'")
+                return result_json
+    return result_json
 
 
 def myapp(environ, start_response):
     str_query = str(environ["QUERY_STRING"])
     script_filename = str(environ["SCRIPT_FILENAME"])
     if script_filename.split("/")[-1] == "tkdata":
-        __code, __result = fun_tk_data(str_query)
+        __result = fun_tk_data(str_query)
         start_response("200 OK", [('Content-Type', 'text/plain')])
         return [json.dumps(__result)]
     elif script_filename.split("/")[-1] == "wmdata":
-        pass
+        __result = fun_wm_data(str_query)
+        start_response("200 OK", [('Content-Type', 'text/plain')])
+        return [json.dumps(__result)]
     else:
         start_response('404 ERROR', [('Content-Type', 'text/plain')])
         return [json.dumps({"code": "404", "data": ""})]
