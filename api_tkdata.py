@@ -13,35 +13,39 @@ from config import mod_config
 from t_redis.redis_manager import RedisManager
 
 
+def fun_tk_data(str_query):
+    result_json = {"code": "200", "data": ""}
+    if str_query == "" or "code=" not in str_query:
+        result_json["code"] = "500"
+        return "500", result_json
+    else:
+        list_query = str_query.split("=")
+        for i in range(len(list_query)):
+            if list_query[i] == "code":
+                rm = RedisManager()
+                result = rm.get_data(str(list_query[i + 1]))
+                result_json["data"] = str(result).replace("u'", "'")
+                result_json["tk_code"] = str(list_query[i + 1])
+                return "200", result_json
+    return "200", result_json
+
+
+def fun_wm_data():
+    pass
+
+
 def myapp(environ, start_response):
     str_query = str(environ["QUERY_STRING"])
     script_filename = str(environ["SCRIPT_FILENAME"])
-    result_json = {"code": "200", "data": ""}
     if script_filename.split("/")[-1] == "tkdata":
-        if str_query == "":
-            start_response('500 ERROR', [('Content-Type', 'text/plain')])
-            result_json["code"] = "500"
-            return [json.dumps(result_json)]
-        elif "code=" not in str_query:
-            start_response('500 ERROR', [('Content-Type', 'text/plain')])
-            result_json["code"] = "500"
-            return [json.dumps(result_json)]
-        else:
-            list_query = str_query.split("=")
-            for i in range(len(list_query)):
-                if list_query[i] == "code":
-                    rm = RedisManager()
-                    result = rm.get_data(str(list_query[i + 1]))
-                    start_response('200 OK', [('Content-Type', 'text/plain')])
-                    result_json["data"] = str(result).replace("u'", "'")
-                    result_json["tk_code"] = str(list_query[i + 1])
-                    return [json.dumps(result_json)]
-        start_response('200 OK', [('Content-Type', 'text/plain')])
-        return [json.dumps(result_json)]
+        __code, __result = fun_tk_data(str_query)
+        start_response("200 OK", [('Content-Type', 'text/plain')])
+        return [json.dumps(__result)]
+    elif script_filename.split("/")[-1] == "wmdata":
+        pass
     else:
         start_response('404 ERROR', [('Content-Type', 'text/plain')])
-        result_json["code"] = "404"
-        return [json.dumps(result_json)]
+        return [json.dumps({"code": "404", "data": ""})]
 
 
 def start_api_tkdata():
