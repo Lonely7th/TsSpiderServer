@@ -7,8 +7,6 @@ __mtime__ = '2018/2/28'
 """
 import datetime
 
-import operator
-
 import redis
 
 from config import mod_config
@@ -17,6 +15,7 @@ from logs.logs_manager import add_error_logs, add_info_logs
 from mongo_db.mongodb_manager import DBManager
 
 
+# 旧版本使用
 def cmp_datetime(a, b):
     a_datetime = datetime.datetime.strptime(a, "%Y-%m-%d")
     b_datetime = datetime.datetime.strptime(b, "%Y-%m-%d")

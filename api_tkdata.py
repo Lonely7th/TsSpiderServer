@@ -50,4 +50,3 @@ def start_api_tkdata():
 
 if __name__ == "__main__":
     start_api_tkdata()
-    pass
