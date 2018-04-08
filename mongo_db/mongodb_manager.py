@@ -37,6 +37,9 @@ class DBManager:
         post['created_time'] = created_time
         return self.table.insert_one(post)
 
+    def push_one(self, where, push):
+        return self.table.update_one(where, {"$push": push})
+
     def add_tk_item(self, tk_code, price_item):
         """
         向详情列表中插入一条数据

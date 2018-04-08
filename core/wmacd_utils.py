@@ -7,6 +7,8 @@ __mtime__ = '2018/4/6'
 """
 import datetime
 
+from mongo_db.mongodb_manager import DBManager
+
 
 def date_range(start, end, step=1, format="%Y-%m-%d"):
     strptime, strftime = datetime.datetime.strptime, datetime.datetime.strftime
@@ -16,11 +18,36 @@ def date_range(start, end, step=1, format="%Y-%m-%d"):
 
 class WmacdUtils:
     def __init__(self):
-        pass
+        self.dm = DBManager("wm_details")
 
     # 更新当前时间轴
-    def update_w_time(self):
-        cur_time = datetime.datetime.now().date()
+    def update_w_time(self, date_list=list()):
+        if len(date_list) == 0:
+            date_list = date_range("2016-01-01", str(datetime.datetime.now().date()))
+        code_list = [x["code"][:6] for x in self.dm.find_by_id("")]
+        tk_details0 = self.dm.find_by_id(code_list[0])
+        cur_date_list = list()
+        # 获取数据库中已经存在的日期列表
+        for tk_item in tk_details0["wmacd_list"]:
+            cur_date_list.extend(tk_item["cur_date"])
+        for date_item in date_list:
+            # 如果当前时间节点不存在数据库中则更新时间轴
+            if date_item not in date_list:
+                if datetime.datetime.strptime(date_item, "%Y-%m-%d").weekday() == 0:
+                    # 如果当前日期是周一则新增一条记录
+                    for tk_code in code_list:
+                        wmacd_item = {
+                            "cur_date": date_item,
+                            "cur_open_price": 0,
+                            "cur_max_price": 0,
+                            "cur_min_price": 0,
+                            "cur_close_price": 0,
+                            "cur_price_range": 0,
+                        }
+                        self.dm.push_one({'code': tk_code}, {"wmacd_list": wmacd_item})
+                # else:
+                # self.dm.add_tk_item(key, price)
+                # 更新时间节点的数据
 
     # 计算当前时间段的wmacd值
     def update_w_macd(self, price_list):
@@ -54,4 +81,5 @@ class WmacdUtils:
 
 
 if __name__ == "__main__":
-    print(date_range("2017-01-01", "2018-01-01"))
+    # print(date_range("2016-01-01", str(datetime.datetime.now().date())))
+    print(datetime.datetime.strptime("2018-04-09", "%Y-%m-%d").weekday())
