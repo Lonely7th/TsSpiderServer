@@ -59,6 +59,9 @@ class DBManager:
             # 数据量较大时避免CursorNotFoundException
             return self.table.find({}, no_cursor_timeout=True)
 
+    def find_by_key(self, request={}):
+        return self.table.find(request)
+
     def update_tk_def(self, keys, values):
         return self.table.update(keys, {"$set": values})
 
