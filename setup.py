@@ -39,12 +39,12 @@ def fun_timer():
         # 开始基础数据爬虫业务
         dc = ENDataCrawl()
         dc.start_crawl()
-        # 开始指标数据计算业务
-        wu = WmacdUtils()
-        wu.update_w_macd()
         # 同步基础数据到redis
         rm = RedisManager()
         rm.update_data()
+        # 开始指标数据计算业务
+        wu = WmacdUtils()
+        wu.update_w_macd()
         # 同步指标数据到redis
         st3 = TsStrategy3()
         st3.update_redis(datetime.datetime.now().date())

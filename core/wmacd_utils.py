@@ -18,39 +18,45 @@ def date_range(start, end, step=1, format="%Y-%m-%d"):
 
 class WmacdUtils:
     def __init__(self):
-        self.dm = DBManager("wm_details")
+        self.db_manager_wm = DBManager("wm_details")
+        self.db_manager_tk = DBManager("tk_details")
 
-    # 更新当前时间轴
-    def update_w_time(self, date_list=list()):
-        if len(date_list) == 0:
-            date_list = date_range("2016-01-01", str(datetime.datetime.now().date()))
-        code_list = [x["code"][:6] for x in self.dm.find_by_id("")]
-        tk_details0 = self.dm.find_by_id(code_list[0])
-        cur_date_list = list()
-        # 获取数据库中已经存在的日期列表
-        for tk_item in tk_details0["wmacd_list"]:
-            cur_date_list.extend(tk_item["cur_date"])
-        for date_item in date_list:
-            # 如果当前时间节点不存在数据库中则更新时间轴
-            if date_item not in date_list:
-                if datetime.datetime.strptime(date_item, "%Y-%m-%d").weekday() == 0:
-                    # 如果当前日期是周一则新增一条记录
-                    for tk_code in code_list:
-                        wmacd_item = {
-                            "cur_date": date_item,
-                            "cur_open_price": 0,
-                            "cur_max_price": 0,
-                            "cur_min_price": 0,
-                            "cur_close_price": 0,
-                            "cur_price_range": 0,
-                        }
-                        self.dm.push_one({'code': tk_code}, {"wmacd_list": wmacd_item})
-                # else:
-                # self.dm.add_tk_item(key, price)
-                # 更新时间节点的数据
+    # 初始化wmacd数据
+    def init_w_time(self, code, date_list):
+        # tk_details = self.dm.find_by_key({"code": code, "cur_timer": {"$in": cur_date_list}})
+        tk_details = self.db_manager_tk.find_by_key({"code": code})
+        for index in range(len(date_list)):
+            if datetime.datetime.strptime(date_list[index], "%Y-%m-%d").weekday() == 0:
+                cur_date_list = date_list[index: index+7]
+                # 从数据库中获取这个时间段内的数据
+                cur_tk_details = [x for x in tk_details["price_list"] if x["cur_timer"] in cur_date_list]
+                open_price_list = [x["cur_open_price"] for x in cur_tk_details]
+                max_price_list = [x["cur_max_price"] for x in cur_tk_details]
+                min_price_list = [x["cur_min_price"] for x in cur_tk_details]
+                close_price_list = [x["cur_close_price"] for x in cur_tk_details]
+                total_volume_list = [x["cur_total_volume"] for x in cur_tk_details]
+                total_money_list = [x["cur_total_money"] for x in cur_tk_details]
+                wmacd_item = {
+                    "date_list": cur_date_list,
+                    "open_price": open_price_list[0],
+                    "max_price": max(max_price_list),
+                    "min_price": min(min_price_list),
+                    "close_price": close_price_list[-1],
+                    "total_volume": sum(total_volume_list),
+                    "total_money": sum(total_money_list),
+                }
+                # 在数据库中添加一条记录
+                self.db_manager_wm.add_tk_item(code, wmacd_item)
+                index += 7
+                print(wmacd_item)
+
+    def update_w_macd(self):
+        code_list = self.db_manager_wm.find_by_id("")
+        for item in code_list:
+            pass
 
     # 计算当前时间段的wmacd值
-    def update_w_macd(self, price_list):
+    def get_w_macd(self, price_list):
         ema_12_list = list()
         for index in range(len(price_list)):
             if index == 0:
@@ -81,5 +87,7 @@ class WmacdUtils:
 
 
 if __name__ == "__main__":
-    # print(date_range("2016-01-01", str(datetime.datetime.now().date())))
-    print(datetime.datetime.strptime("2018-04-09", "%Y-%m-%d").weekday())
+    # 初始化时间轴
+    date_list = date_range("2016-01-04", "2018-12-30")
+    wu = WmacdUtils()
+    wu.init_w_time("000001", date_list)

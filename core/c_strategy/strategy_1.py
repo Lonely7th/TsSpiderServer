@@ -14,14 +14,27 @@ def load_data(code):
     return data_df
 
 
-def fun_decision(data):
-    print(data)
+k1 = 0.2
+k2 = 0.05
+
+
+def fun_decision(data, period=180):
+    close_price_list = data["cur_close_price"]
+    result_list = list()
+    if len(close_price_list) > period:
+        for index in range(period, len(close_price_list)):
+            max_price = np.max(close_price_list[index - period: index])
+            cur_price = close_price_list[index]
+            if (max_price - cur_price) / cur_price > k1:
+                result_list.append(profit_expectation(index, close_price_list))
+    print(len([x for x in result_list if x > 0]))
+    print(len([x for x in result_list if x <= 0]))
 
 
 def profit_expectation(index, price_list, period=7):
     cur_profit = 0
     if index + period < len(price_list):
-        cur_profit = (price_list[index+period]-price_list[index]) / price_list[index]
+        cur_profit = (price_list[index + period] - price_list[index]) / price_list[index]
     return cur_profit
 
 
