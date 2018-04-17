@@ -31,14 +31,14 @@ class TsStrategy3:
 
     # 将策略结果同步到redis
     def update_redis(self, date):
-        dm = DBManager("wm_details")
-        code_list = dm.find_by_id("")
+        db_manager_wm = DBManager("wm_details")
+        code_list = db_manager_wm.find_by_id("")
         __result = list()
         for item in code_list:
             try:
-                code = item["code"][:6]
+                code = item["code"]
                 # 获取wmacd数据
-                ticker_list = list(dm.find_by_id(tk_code=code))
+                ticker_list = list(db_manager_wm.find_by_id(tk_code=code))
                 for tk_item in ticker_list:
                     if datetime.datetime.strptime(tk_item["cur_date"], "%Y-%m-%d") > datetime.datetime.strptime(date, "%Y-%m-%d"):
                         ticker_list.remove(tk_item)

@@ -76,6 +76,9 @@ class DBManager:
     def update_tk_price_list(self, tk_code, cur_timer, cur_item):
         return self.table.update({"code": tk_code, "price_list.cur_timer": cur_timer}, {"$set": {"price_list.$": cur_item}})
 
+    def update_wm_price_list(self, tk_code, frist_timer, cur_item):
+        return self.table.update({"code": tk_code, "price_list.frist_date": frist_timer}, {"$set": {"price_list.$": cur_item}})
+
     def delete_by_id(self, post_id):
         """
         根据ID删除，同样注意id值的格式
