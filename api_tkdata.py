@@ -38,8 +38,8 @@ def fun_wm_data(str_query):
         for i in range(len(list_query)):
             if list_query[i] == "date":
                 rm = RedisManager()
-                result = rm.get_data(str(list_query[i + 1]))
-                result_json["date"] = str(list_query[i + 1])
+                result = rm.get_data("wm_" + str(list_query[i + 1]))
+                result_json["tk_code"] = str(list_query[i + 1])
                 result_json["data"] = str(result).replace("u'", "'")
                 return result_json
     return result_json

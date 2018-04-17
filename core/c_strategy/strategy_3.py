@@ -33,31 +33,23 @@ class TsStrategy3:
     def update_redis(self, date):
         db_manager_wm = DBManager("wm_details")
         code_list = db_manager_wm.find_by_id("")
-        __result = list()
+        buy_list = list()
         for item in code_list:
             try:
                 code = item["code"]
                 # 获取wmacd数据
-                ticker_list = list(db_manager_wm.find_by_id(tk_code=code))
-                for tk_item in ticker_list:
-                    if datetime.datetime.strptime(tk_item["cur_date"], "%Y-%m-%d") > datetime.datetime.strptime(date, "%Y-%m-%d"):
-                        ticker_list.remove(tk_item)
-                # 匹配日期
-                ticker_list_sorted = sorted(ticker_list, key=lambda x: cmp_datatime(x), reverse=True)
-                __ticker = tkWMacdBean(code,
-                    [x["price_list"] for x in ticker_list_sorted],
-                    [x["wmacd_list"] for x in ticker_list_sorted],
-                    [x["diff_list"] for x in ticker_list_sorted],
-                    [x["dea_list"] for x in ticker_list_sorted],
-                    [x["tur_list"] for x in ticker_list_sorted],
-                    [x["highest_list"] for x in ticker_list_sorted],
-                    [x["open_list"] for x in ticker_list_sorted])
-                if self.get_result(__ticker):
-                    __result.append(code)
+                price_list = list(reversed([float(x) for x in line.split("#")[0].strip()[13:-2].split(",")]))
+                tur_list = list(reversed([float(x) for x in line.split("#")[1].strip()[1:-2].split(",")]))
+                highest_list = list(reversed([float(x) for x in line.split("#")[2].strip()[1:-2].split(",")]))
+                open_list = list(reversed([float(x) for x in line.split("#")[3].strip()[1:-2].split(",")]))
+                wmacd_list, diff_list, dea_list = fun_02(price_list[:])
+                tk_bean = tkWMacdBean(line[:11], price_list, wmacd_list, diff_list, dea_list, tur_list, highest_list, open_list)
+                if self.get_result(tk_bean):
+                    buy_list.append(code)
             except Exception:
                 continue
         rm = RedisManager()
-        rm.set_data(date, __result)
+        rm.set_data("wm_" + str(date), buy_list)
 
 
 if __name__ == "__main__":
