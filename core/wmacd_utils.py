@@ -29,18 +29,22 @@ class WmacdUtils:
         ticker_list = self.db_manager_wm.find_by_id("")
         for tk_item in ticker_list:
             code = tk_item["code"]
+            print(code)
             tk_details = self.db_manager_tk.find_by_key({"code": code})[0]
             for index in range(len(date_list)):
                 if datetime.datetime.strptime(date_list[index], "%Y-%m-%d").weekday() == 0:
                     cur_date_list = date_list[index: index+7]
                     # 从数据库中获取这个时间段内的数据
                     cur_tk_details = [x for x in tk_details["price_list"] if x["cur_timer"] in cur_date_list]
-                    open_price_list = [float(x["cur_open_price"]) for x in cur_tk_details]
-                    max_price_list = [float(x["cur_max_price"]) for x in cur_tk_details]
-                    min_price_list = [float(x["cur_min_price"]) for x in cur_tk_details]
-                    close_price_list = [float(x["cur_close_price"]) for x in cur_tk_details]
-                    total_volume_list = [int(x["cur_total_volume"].replace(",", "")) for x in cur_tk_details]
-                    total_money_list = [int(x["cur_total_money"].replace(",", "")) for x in cur_tk_details]
+                    try:
+                        open_price_list = [float(x["cur_open_price"]) for x in cur_tk_details]
+                        max_price_list = [float(x["cur_max_price"]) for x in cur_tk_details]
+                        min_price_list = [float(x["cur_min_price"]) for x in cur_tk_details]
+                        close_price_list = [float(x["cur_close_price"]) for x in cur_tk_details]
+                        total_volume_list = [int(x["cur_total_volume"].replace(",", "")) for x in cur_tk_details]
+                        total_money_list = [int(x["cur_total_money"].replace(",", "")) for x in cur_tk_details]
+                    except Exception as e:
+                        continue
                     if cur_tk_details:
                         wmacd_item = {
                             "frist_date": cur_date_list[0],
@@ -52,8 +56,19 @@ class WmacdUtils:
                             "total_volume": sum(total_volume_list),
                             "total_money": sum(total_money_list),
                         }
-                        # 在数据库中添加一条记录
-                        self.db_manager_wm.add_tk_item(code, wmacd_item)
+                    else:
+                        wmacd_item = {
+                            "frist_date": cur_date_list[0],
+                            "date_list": cur_date_list,
+                            "open_price": 0,
+                            "max_price": 0,
+                            "min_price": 0,
+                            "close_price": 0,
+                            "total_volume": 0,
+                            "total_money": 0,
+                        }
+                    # 在数据库中添加一条记录
+                    self.db_manager_wm.add_tk_item(code, wmacd_item)
 
     def update_w_macd(self, cur_date=datetime.datetime.now().date()):
         date_list = date_range("2016-01-04", "2018-12-30")
@@ -93,3 +108,4 @@ class WmacdUtils:
 if __name__ == "__main__":
     wu = WmacdUtils()
     wu.init_w_time()
+    # wu.update_w_macd()
