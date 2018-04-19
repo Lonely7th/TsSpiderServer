@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e50f4f68-ef66-4af8-a275-4516f7aaef98" name="Default" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+      <change afterPath="$PROJECT_DIR$/mongo_db/mongodb_init.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TsSpiderServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TsSpiderServer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/c_strategy/strategy_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/c_strategy/strategy_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/wmacd_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/wmacd_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,6 +27,7 @@
     <SUITE FILE_PATH="coverage/TsSpiderServer$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1522856632537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TsSpiderServer$data_crawl.coverage" NAME="data_crawl Coverage Results" MODIFIED="1522851666866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
     <SUITE FILE_PATH="coverage/TsSpiderServer$redis_manager.coverage" NAME="redis_manager Coverage Results" MODIFIED="1520582997751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/redis" />
+<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/TsSpiderServer$redis_manager__1_.coverage" NAME="redis_manager (1) Coverage Results" MODIFIED="1522856670337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/t_redis" />
   </component>
   <component name="FileEditorManager">
@@ -28,6 +39,67 @@
               <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
                 <element signature="e#122#137#0" expanded="true" />
+=======
+    <SUITE FILE_PATH="coverage/TsSpiderServer$mongodb_init.coverage" NAME="mongodb_init Coverage Results" MODIFIED="1524130310743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mongo_db" />
+    <SUITE FILE_PATH="coverage/TsSpiderServer$wmacd_utils.coverage" NAME="wmacd_utils Coverage Results" MODIFIED="1524131324492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
+    <SUITE FILE_PATH="coverage/TsSpiderServer$strategy_3.coverage" NAME="strategy_3 Coverage Results" MODIFIED="1524129572248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/c_strategy" />
+    <SUITE FILE_PATH="coverage/TsSpiderServer$strategy_1.coverage" NAME="strategy_1 Coverage Results" MODIFIED="1523950226372" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/c_strategy" />
+    <SUITE FILE_PATH="coverage/TsSpiderServer$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1522856632537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="data_crawl.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/data_crawl.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="74" column="60" lean-forward="true" selection-start-line="74" selection-start-column="60" selection-end-line="74" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mongodb_init.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mongo_db/mongodb_init.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+              <folding>
+                <element signature="e#135#144#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wmacd_utils.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/wmacd_utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="736">
+              <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+              <folding>
+                <element signature="e#125#140#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strategy_3.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/c_strategy/strategy_3.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-181">
+              <caret line="34" column="89" lean-forward="true" selection-start-line="34" selection-start-column="89" selection-end-line="34" selection-end-column="89" />
+              <folding>
+                <element signature="e#122#142#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mod_config.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/mod_config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <folding>
+                <element signature="e#122#141#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -36,9 +108,33 @@
       <file leaf-file-name="api_tkdata.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api_tkdata.py">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-143">
+              <caret line="28" column="22" lean-forward="true" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+              <folding>
+                <element signature="e#120#131#0" expanded="true" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="api_tkdata.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api_tkdata.py">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-286">
               <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
               <folding />
+=======
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/setup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="40" column="24" lean-forward="true" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+              <folding>
+                <element signature="e#122#144#0" expanded="true" />
+              </folding>
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
             </state>
           </provider>
         </entry>
@@ -73,10 +169,11 @@
         <option value="$PROJECT_DIR$/bean/tk_wmacd_bean.py" />
         <option value="$PROJECT_DIR$/t_redis/redis_manager.py" />
         <option value="$PROJECT_DIR$/config/config.conf" />
-        <option value="$PROJECT_DIR$/api_tkdata.py" />
-        <option value="$PROJECT_DIR$/core/c_strategy/strategy_3.py" />
         <option value="$PROJECT_DIR$/core/c_strategy/strategy_1.py" />
         <option value="$PROJECT_DIR$/mongo_db/mongodb_manager.py" />
+        <option value="$PROJECT_DIR$/api_tkdata.py" />
+        <option value="$PROJECT_DIR$/mongo_db/mongodb_init.py" />
+        <option value="$PROJECT_DIR$/core/c_strategy/strategy_3.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/core/wmacd_utils.py" />
       </list>
@@ -91,7 +188,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -222,11 +319,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Python36\workspace\TsSpiderServer\mongo_db" />
       <recent name="D:\python_space\TsSpiderServer\redis" />
       <recent name="D:\python_space\TsSpiderServer\mongo_db" />
       <recent name="D:\python_space\TsSpiderServer\core" />
       <recent name="D:\python_space\TsSpiderServer\logs" />
-      <recent name="D:\python_space\TsSpiderServer" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -280,45 +377,41 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+<<<<<<< HEAD
     <configuration name="data_crawl" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
+    <configuration name="mongodb_init" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TsSpiderServer" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mongo_db" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+<<<<<<< HEAD
       <module name="TsSpiderServer" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/data_crawl.py" />
+=======
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mongo_db/mongodb_init.py" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+<<<<<<< HEAD
     <configuration name="redis_manager (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/t_redis" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TsSpiderServer" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/t_redis/redis_manager.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
+=======
     <configuration name="redis_manager" type="PythonConfigurationType" factoryName="Python">
+      <module name="TsSpiderServer" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -329,15 +422,25 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+<<<<<<< HEAD
       <module name="TsSpiderServer" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/t_redis/redis_manager.py" />
+=======
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/redis/redis_manager.py" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+<<<<<<< HEAD
+    <configuration name="redis_manager" type="PythonConfigurationType" factoryName="Python">
+=======
     <configuration name="strategy_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TsSpiderServer" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -348,9 +451,43 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+<<<<<<< HEAD
+      <module name="TsSpiderServer" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/redis/redis_manager.py" />
+=======
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/c_strategy/strategy_1.py" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+<<<<<<< HEAD
+    <configuration name="strategy_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
+    <configuration name="strategy_3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TsSpiderServer" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/c_strategy" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+<<<<<<< HEAD
       <module name="TsSpiderServer" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/c_strategy/strategy_1.py" />
+=======
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/c_strategy/strategy_3.py" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -375,6 +512,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+<<<<<<< HEAD
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Python.strategy_1" />
       <item index="1" class="java.lang.String" itemvalue="Python.redis_manager" />
@@ -391,6 +529,24 @@
         <item index="2" class="java.lang.String" itemvalue="Python.redis_manager (1)" />
         <item index="3" class="java.lang.String" itemvalue="Python.wmacd_utils" />
         <item index="4" class="java.lang.String" itemvalue="Python.strategy_1" />
+=======
+    <list>
+      <item itemvalue="Python.Unnamed" />
+      <item itemvalue="Python.redis_manager" />
+      <item itemvalue="Python.api_tkdata" />
+      <item itemvalue="Python.wmacd_utils" />
+      <item itemvalue="Python.strategy_1" />
+      <item itemvalue="Python.mongodb_init" />
+      <item itemvalue="Python.strategy_3" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.wmacd_utils" />
+        <item itemvalue="Python.mongodb_init" />
+        <item itemvalue="Python.strategy_3" />
+        <item itemvalue="Python.strategy_1" />
+        <item itemvalue="Python.api_tkdata" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
       </list>
     </recent_temporary>
   </component>
@@ -413,6 +569,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
+<<<<<<< HEAD
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294893" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294893" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -434,6 +591,29 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+=======
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32943678" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27559912" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32784185" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17750533" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39868203" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32934782" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -452,6 +632,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -459,6 +640,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -490,7 +673,11 @@
     <entry file="file://$PROJECT_DIR$/core/data_crawl.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1241">
+<<<<<<< HEAD
           <caret line="81" column="45" lean-forward="false" selection-start-line="81" selection-start-column="45" selection-end-line="81" selection-end-column="45" />
+=======
+          <caret line="81" column="45" selection-start-line="81" selection-start-column="45" selection-end-line="81" selection-end-column="45" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
         </state>
       </provider>
     </entry>
@@ -689,22 +876,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/logs/logs_manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        <state relative-caret-position="249">
+          <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="20" column="3" lean-forward="true" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+=======
+    <entry file="file://$PROJECT_DIR$/bean/tk_wmacd_bean.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.conf">
+    <entry file="file://$PROJECT_DIR$/../../Lib/site-packages/numpy/core/fromnumeric.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="154">
           <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
         </state>
@@ -732,6 +927,31 @@
         <state relative-caret-position="880">
           <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
+=======
+        <state relative-caret-position="48774">
+          <caret line="2228" column="19" lean-forward="true" selection-start-line="2228" selection-start-column="19" selection-end-line="2228" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/c_strategy/strategy_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="33" column="52" lean-forward="true" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2361">
+          <caret line="17" column="3" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
         </state>
       </provider>
     </entry>
@@ -742,6 +962,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/core/data_crawl.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-360">
@@ -768,13 +989,71 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1371">
           <caret line="123" column="21" lean-forward="true" selection-start-line="123" selection-start-column="21" selection-end-line="123" selection-end-column="21" />
+=======
+    <entry file="file://$PROJECT_DIR$/mongo_db/mongodb_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+          <folding>
+            <element signature="e#127#156#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongo_db/mongodb_manager.py">
+    <entry file="file://$PROJECT_DIR$/config/config.conf">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="12" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/t_redis/redis_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="55" column="31" lean-forward="true" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
+          <folding>
+            <element signature="e#122#137#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/mod_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#122#141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/c_strategy/strategy_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-181">
+          <caret line="34" column="89" lean-forward="true" selection-start-line="34" selection-start-column="89" selection-end-line="34" selection-end-column="89" />
+          <folding>
+            <element signature="e#122#142#0" expanded="true" />
+          </folding>
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/data_crawl.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="215">
           <caret line="73" column="71" lean-forward="false" selection-start-line="73" selection-start-column="71" selection-end-line="73" selection-end-column="71" />
+=======
+        <state relative-caret-position="187">
+          <caret line="74" column="60" lean-forward="true" selection-start-line="74" selection-start-column="60" selection-end-line="74" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api_tkdata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-143">
+          <caret line="28" column="22" lean-forward="true" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
           <folding>
             <element signature="e#127#156#0" expanded="false" />
           </folding>
@@ -783,6 +1062,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="405">
           <caret line="49" column="19" lean-forward="true" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
         </state>
@@ -793,13 +1073,35 @@
         <state relative-caret-position="-286">
           <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
           <folding />
+=======
+        <state relative-caret-position="429">
+          <caret line="40" column="24" lean-forward="true" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+          <folding>
+            <element signature="e#122#144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mongo_db/mongodb_init.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding>
+            <element signature="e#135#144#0" expanded="true" />
+          </folding>
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/c_strategy/strategy_3.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="579">
           <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+=======
+        <state relative-caret-position="736">
+          <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+>>>>>>> b0bba452001480bfb5bc48e3873a709cc28a9085
           <folding>
             <element signature="e#122#137#0" expanded="true" />
           </folding>
