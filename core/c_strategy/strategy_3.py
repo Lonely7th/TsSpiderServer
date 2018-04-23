@@ -36,10 +36,8 @@ class TsStrategy3:
                         return 1
         return -1
 
-    # 将策略结果同步到redis
-    def update_redis(self, date):
-        db_manager_wm = DBManager("wm_details")
-        code_list = db_manager_wm.get_code_list()
+    def get_buy_list(self, date):
+        code_list = self.db_manager_wm.get_code_list()
         buy_list = list()
         for item in code_list:
             try:
@@ -59,12 +57,17 @@ class TsStrategy3:
                         open_list.append(tk_item["close_price"])
                 wmacd_list, diff_list, dea_list = self.get_w_macd(price_list[:])
                 # 创建wmacd实体
-                tk_bean = tkWMacdBean(code, price_list, wmacd_list, diff_list, dea_list, tur_list, highest_list, open_list)
+                tk_bean = tkWMacdBean(code, price_list, wmacd_list, diff_list, dea_list, tur_list, highest_list,
+                                      open_list)
                 if self.get_result(tk_bean) == 1:
                     buy_list.append(code)
             except Exception as e:
                 continue
-        print(buy_list)
+        return buy_list
+
+    # 将策略结果同步到redis
+    def update_redis(self, date):
+        buy_list = self.get_buy_list(date)
         rm = RedisManager()
         rm.set_data("wm_" + str(date), buy_list)
 
