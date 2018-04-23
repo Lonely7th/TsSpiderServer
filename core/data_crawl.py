@@ -45,7 +45,7 @@ class ENDataCrawl:
         self.dm.clsoe_db()
 
     def get_url(self, year, season):
-        code_list = self.dm.find_by_id("")
+        code_list = self.dm.get_code_list()
         for item in code_list:
             key = item["code"][:6]
             url = "http://quotes.money.163.com/trade/lsjysj_" + key + ".html?year=" + year + "&season=" + season

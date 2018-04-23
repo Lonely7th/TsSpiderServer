@@ -62,6 +62,12 @@ class DBManager:
     def find_by_key(self, request={}):
         return self.table.find(request)
 
+    def get_code_list(self):
+        """
+        获取股票代码列表
+        """
+        return self.table.find({}, {"code": 1}, no_cursor_timeout=True)
+
     def update_tk_def(self, keys, values):
         return self.table.update(keys, {"$set": values})
 

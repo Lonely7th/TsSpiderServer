@@ -39,7 +39,7 @@ class TsStrategy3:
     # 将策略结果同步到redis
     def update_redis(self, date):
         db_manager_wm = DBManager("wm_details")
-        code_list = db_manager_wm.find_by_id("")
+        code_list = db_manager_wm.get_code_list()
         buy_list = list()
         for item in code_list:
             try:

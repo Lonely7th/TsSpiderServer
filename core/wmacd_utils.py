@@ -26,7 +26,7 @@ class WmacdUtils:
         # 初始化时间轴
         date_list = date_range("2016-01-04", "2018-12-30")
         # tk_details = self.dm.find_by_key({"code": code, "cur_timer": {"$in": cur_date_list}})
-        ticker_list = self.db_manager_wm.find_by_id("")
+        ticker_list = self.db_manager_wm.get_code_list()
         for tk_item in ticker_list:
             code = tk_item["code"]
             print(code)
@@ -77,7 +77,7 @@ class WmacdUtils:
             if datetime.datetime.strptime(date_list[index], "%Y-%m-%d").weekday() == 0:
                 cur_date_list = date_list[index: index + 7]
                 if str(cur_date) in cur_date_list:
-                    ticker_list = self.db_manager_wm.find_by_id("")
+                    ticker_list = self.db_manager_wm.get_code_list()
                     # 更新每支股票的数据
                     for tk_item in ticker_list:
                         code = tk_item["code"]

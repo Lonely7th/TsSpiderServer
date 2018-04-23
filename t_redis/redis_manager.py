@@ -41,7 +41,7 @@ class RedisManager:
     def update_data(self):
         add_info_logs("redis_start", "-开始同步缓存-")
         dm = DBManager("tk_details")
-        code_list = dm.find_by_id("")
+        code_list = dm.get_code_list()
         for item in code_list:
             try:
                 code = item["code"][:6]
