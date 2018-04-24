@@ -50,7 +50,6 @@ class TsStrategy3:
                 tk_details = self.db_manager_wm.find_by_key({"code": code})[0]
                 for tk_item in tk_details["price_list"]:
                     if time_cmp(str(date), tk_item["frist_date"]):
-                        print(tk_item)
                         price_list.append(tk_item["close_price"])
                         tur_list.append(tk_item["close_price"])
                         highest_list.append(tk_item["close_price"])
