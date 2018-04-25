@@ -14,12 +14,12 @@ from mongo_db.mongodb_manager import DBManager
 from t_bp.file_utils import FileUtils
 
 capital_base = 1000000
-# capital_available = capital_base
+capital_available = capital_base
 current_position = list()
 history_capital = list()
 history_order = list()
 k_rate = 0.03
-d_rate = -0.03
+d_rate = -0.05
 
 
 def get_cur_values(code, date, key):
@@ -46,23 +46,43 @@ def fun_buy(buy_list, date):
             if amount >= 100:
                 item_position = [code, open_price, amount]
                 current_position.append(item_position)
+                capital_base -= open_price * amount
                 # 保存开单记录
-                f_utils.insert_line("buy-->" + json.dumps(item_position))
+                f_utils.insert_line("buy-->" + json.dumps(item_position.append(capital_base)))
 
 
 def fun_sell(date):
     global capital_base
-    f_utils.insert_line("date->" + date)
-    while current_position:
-        item_position = current_position.pop()
-        close_price = get_cur_values(item_position[0], date, "cur_close_price")
-        if close_price != 0 and not np.isnan(close_price):
-            profit = (close_price - item_position[1]) * item_position[2]
-            capital_base += profit
-            f_utils.insert_line("sell->" + json.dumps([item_position[0], round(profit, 2), capital_base]))
-    # 统计历史数据
-    history_capital.append(capital_base)
-    f_utils.insert_line("cash->" + str(capital_base))
+    if datetime.datetime.strptime(date, "%Y-%m-%d").weekday() == 4:
+        f_utils.insert_line("date->" + date)
+        while current_position:
+            item_position = current_position.pop()
+            close_price = get_cur_values(item_position[0], date, "cur_close_price")
+            if close_price != 0 and not np.isnan(close_price):
+                profit_rate = (close_price - item_position[1]) / item_position[1]  # 计算收益率
+                capital_base += close_price * item_position[2]
+                f_utils.insert_line("sell->" + json.dumps([item_position[0], str(round(profit_rate * 100, 2))+"%", capital_base]))
+        # 统计历史数据
+        history_capital.append(capital_base)
+        f_utils.insert_line("cash->" + str(capital_base))
+
+
+def fun_sell_2(date):
+    global capital_base
+    cur_weekday = datetime.datetime.strptime(date, "%Y-%m-%d").weekday()
+    if cur_weekday in range(1, 5):
+        f_utils.insert_line("date->" + date)
+        for item_position in current_position:
+            close_price = get_cur_values(item_position[0], date, "cur_close_price")
+            if close_price != 0 and not np.isnan(close_price):
+                profit_rate = (close_price - item_position[1]) / item_position[1]  # 计算收益率
+                if cur_weekday == 4 or profit_rate < d_rate:
+                    capital_base += close_price * item_position[2]
+                    f_utils.insert_line("sell->" + json.dumps([item_position[0], str(round(profit_rate * 100, 2)) + "%", capital_base]))
+                    current_position.remove(item_position)
+        # 统计历史数据
+        history_capital.append(capital_base)
+        f_utils.insert_line("cash->" + str(capital_base))
 
 
 def start_bp():
@@ -72,18 +92,17 @@ def start_bp():
     date_list = date_range("2017-01-09", "2018-01-27")
     for index in range(len(date_list)):
         cur_date = date_list[index]
-        print(cur_date)
         if datetime.datetime.strptime(cur_date, "%Y-%m-%d").weekday() == 0:
             buy_list = st3.get_buy_list(date_list[index-3])
             if buy_list:
                 fun_buy(buy_list, cur_date)
-        elif datetime.datetime.strptime(cur_date, "%Y-%m-%d").weekday() == 4:
+        else:
             fun_sell(cur_date)
     net_rate = (history_capital[-1] - history_capital[0]) / history_capital[0]  # 计算回测结果
     print(round(net_rate * 100, 2), "%")
 
 
 if __name__ == "__main__":
-    f_utils = FileUtils("bp_result_2.txt", "a+")
+    f_utils = FileUtils("bp_result.txt", "a+")
     db_manager_tk = DBManager("tk_details")
     start_bp()
