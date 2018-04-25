@@ -14,6 +14,7 @@ from mongo_db.mongodb_manager import DBManager
 from t_bp.file_utils import FileUtils
 
 capital_base = 1000000
+# capital_available = capital_base
 current_position = list()
 history_capital = list()
 history_order = list()
@@ -58,19 +59,20 @@ def fun_sell(date):
         if close_price != 0 and not np.isnan(close_price):
             profit = (close_price - item_position[1]) * item_position[2]
             capital_base += profit
-            f_utils.insert_line("sell->" + json.dumps([item_position[0], profit, capital_base]))
+            f_utils.insert_line("sell->" + json.dumps([item_position[0], round(profit, 2), capital_base]))
     # 统计历史数据
     history_capital.append(capital_base)
-    f_utils.insert_line("cash->" + capital_base)
+    f_utils.insert_line("cash->" + str(capital_base))
 
 
 def start_bp():
     st3 = TsStrategy3()
     history_capital.append(capital_base)
     # 初始化时间轴
-    date_list = date_range("2018-03-05", "2018-04-13")
+    date_list = date_range("2017-01-09", "2018-01-27")
     for index in range(len(date_list)):
         cur_date = date_list[index]
+        print(cur_date)
         if datetime.datetime.strptime(cur_date, "%Y-%m-%d").weekday() == 0:
             buy_list = st3.get_buy_list(date_list[index-3])
             if buy_list:
@@ -82,6 +84,6 @@ def start_bp():
 
 
 if __name__ == "__main__":
-    f_utils = FileUtils("bp_result.txt", "a+")
+    f_utils = FileUtils("bp_result_2.txt", "a+")
     db_manager_tk = DBManager("tk_details")
     start_bp()

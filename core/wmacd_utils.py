@@ -16,6 +16,10 @@ def date_range(start, end, step=1, format="%Y-%m-%d"):
     return [strftime(strptime(start, format) + datetime.timedelta(i), format) for i in range(0, days, step)]
 
 
+def cmp_datatime_02(item):
+    return datetime.datetime.strptime(item["cur_timer"], "%Y-%m-%d")
+
+
 class WmacdUtils:
     def __init__(self):
         self.db_manager_wm = DBManager("wm_details")
@@ -26,16 +30,17 @@ class WmacdUtils:
         # 初始化时间轴
         date_list = date_range("2016-01-04", "2018-12-30")
         # tk_details = self.dm.find_by_key({"code": code, "cur_timer": {"$in": cur_date_list}})
-        ticker_list = self.db_manager_wm.get_code_list()
-        for tk_item in ticker_list:
-            code = tk_item["code"]
+        code_list = self.db_manager_wm.get_code_list()
+        for code_item in code_list:
+            code = code_item["code"]
             print(code)
-            tk_details = self.db_manager_tk.find_by_key({"code": code})[0]
+            tk_result = self.db_manager_tk.find_by_key({"code": code})[0]
+            tk_details = sorted(tk_result["price_list"], key=lambda x: cmp_datatime_02(x), reverse=False)
             for index in range(len(date_list)):
                 if datetime.datetime.strptime(date_list[index], "%Y-%m-%d").weekday() == 0:
                     cur_date_list = date_list[index: index+7]
                     # 从数据库中获取这个时间段内的数据
-                    cur_tk_details = [x for x in tk_details["price_list"] if x["cur_timer"] in cur_date_list]
+                    cur_tk_details = [x for x in tk_details if x["cur_timer"] in cur_date_list]
                     try:
                         open_price_list = [float(x["cur_open_price"]) for x in cur_tk_details]
                         max_price_list = [float(x["cur_max_price"]) for x in cur_tk_details]
@@ -81,9 +86,10 @@ class WmacdUtils:
                     # 更新每支股票的数据
                     for tk_item in ticker_list:
                         code = tk_item["code"]
-                        tk_details = self.db_manager_tk.find_by_key({"code": code})[0]
+                        tk_result = self.db_manager_tk.find_by_key({"code": code})[0]
+                        tk_details = sorted(tk_result["price_list"], key=lambda x: cmp_datatime_02(x), reverse=False)
                         # 从数据库中获取这个时间段内的数据
-                        cur_tk_details = [x for x in tk_details["price_list"] if x["cur_timer"] in cur_date_list]
+                        cur_tk_details = [x for x in tk_details if x["cur_timer"] in cur_date_list]
                         open_price_list = [float(x["cur_open_price"]) for x in cur_tk_details]
                         max_price_list = [float(x["cur_max_price"]) for x in cur_tk_details]
                         min_price_list = [float(x["cur_min_price"]) for x in cur_tk_details]

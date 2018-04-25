@@ -6,7 +6,6 @@ __author__ = 'JN Zhang'
 __mtime__ = '2018/4/6'
 """
 import datetime
-import time
 import numpy as np
 
 from bean.tk_wmacd_bean import tkWMacdBean
@@ -31,7 +30,7 @@ class TsStrategy3:
     def get_result(self, ticker):
         if isinstance(ticker, tkWMacdBean) and len(ticker.get_wmacd_list()) > 30:
             if ticker.get_wmacd_list()[-1] > 0 >= ticker.get_wmacd_list()[-2]:
-                if 0.15 > ticker.get_diff_list()[-1] > 0:
+                if 0.1 > ticker.get_diff_list()[-1] > 0:
                     if np.mean(ticker.get_tur_list()[-5:-1]) < ticker.get_tur_list()[-1]:
                         return 1
         return -1
@@ -48,12 +47,12 @@ class TsStrategy3:
                 open_list = list()
                 # 获取wmacd数据
                 tk_details = self.db_manager_wm.find_by_key({"code": code})[0]
-                for tk_item in tk_details["price_list"]:
+                for tk_item in [x for x in tk_details["price_list"] if x["close_price"] != 0]:
                     if time_cmp(str(date), tk_item["frist_date"]):
                         price_list.append(tk_item["close_price"])
-                        tur_list.append(tk_item["close_price"])
-                        highest_list.append(tk_item["close_price"])
-                        open_list.append(tk_item["close_price"])
+                        tur_list.append(tk_item["total_volume"])
+                        highest_list.append(tk_item["max_price"])
+                        open_list.append(tk_item["open_price"])
                 wmacd_list, diff_list, dea_list = self.get_w_macd(price_list[:])
                 # 创建wmacd实体
                 tk_bean = tkWMacdBean(code, price_list, wmacd_list, diff_list, dea_list, tur_list, highest_list,
