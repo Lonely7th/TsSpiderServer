@@ -48,20 +48,20 @@ def fun_buy(buy_list, date):
                 current_position.append(item_position)
                 capital_base -= open_price * amount
                 # 保存开单记录
-                f_utils.insert_line("buy-->" + json.dumps(item_position.append(capital_base)))
+                f_utils.insert_line("buy-->" + json.dumps(item_position))
 
 
 def fun_sell(date):
     global capital_base
     if datetime.datetime.strptime(date, "%Y-%m-%d").weekday() == 4:
         f_utils.insert_line("date->" + date)
-        while current_position:
-            item_position = current_position.pop()
+        for item_position in current_position[:]:
             close_price = get_cur_values(item_position[0], date, "cur_close_price")
-            if close_price != 0 and not np.isnan(close_price):
+            if close_price != 0:
                 profit_rate = (close_price - item_position[1]) / item_position[1]  # 计算收益率
                 capital_base += close_price * item_position[2]
                 f_utils.insert_line("sell->" + json.dumps([item_position[0], str(round(profit_rate * 100, 2))+"%", capital_base]))
+                current_position.remove(item_position)
         # 统计历史数据
         history_capital.append(capital_base)
         f_utils.insert_line("cash->" + str(capital_base))
@@ -89,9 +89,10 @@ def start_bp():
     st3 = TsStrategy3()
     history_capital.append(capital_base)
     # 初始化时间轴
-    date_list = date_range("2017-01-09", "2018-01-27")
+    date_list = date_range("2017-06-05", "2018-03-09")
     for index in range(len(date_list)):
         cur_date = date_list[index]
+        print(cur_date)
         if datetime.datetime.strptime(cur_date, "%Y-%m-%d").weekday() == 0:
             buy_list = st3.get_buy_list(date_list[index-3])
             if buy_list:
