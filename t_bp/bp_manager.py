@@ -18,8 +18,8 @@ capital_available = capital_base
 current_position = list()
 history_capital = list()
 history_order = list()
-k_rate = 0.03
-d_rate = -0.05
+k_rate = 0.05
+d_rate = -0.03
 
 
 def get_cur_values(code, date, key):
@@ -72,11 +72,29 @@ def fun_sell_2(date):
     cur_weekday = datetime.datetime.strptime(date, "%Y-%m-%d").weekday()
     if cur_weekday in range(1, 5):
         f_utils.insert_line("date->" + date)
-        for item_position in current_position:
+        for item_position in current_position[:]:
             close_price = get_cur_values(item_position[0], date, "cur_close_price")
             if close_price != 0 and not np.isnan(close_price):
                 profit_rate = (close_price - item_position[1]) / item_position[1]  # 计算收益率
                 if cur_weekday == 4 or profit_rate < d_rate:
+                    capital_base += close_price * item_position[2]
+                    f_utils.insert_line("sell->" + json.dumps([item_position[0], str(round(profit_rate * 100, 2)) + "%", capital_base]))
+                    current_position.remove(item_position)
+        # 统计历史数据
+        history_capital.append(capital_base)
+        f_utils.insert_line("cash->" + str(capital_base))
+
+
+def fun_sell_3(date):
+    global capital_base
+    cur_weekday = datetime.datetime.strptime(date, "%Y-%m-%d").weekday()
+    if cur_weekday in range(1, 5):
+        f_utils.insert_line("date->" + date)
+        for item_position in current_position[:]:
+            close_price = get_cur_values(item_position[0], date, "cur_close_price")
+            if close_price != 0 and not np.isnan(close_price):
+                profit_rate = (close_price - item_position[1]) / item_position[1]  # 计算收益率
+                if cur_weekday == 4 or profit_rate >= k_rate:
                     capital_base += close_price * item_position[2]
                     f_utils.insert_line("sell->" + json.dumps([item_position[0], str(round(profit_rate * 100, 2)) + "%", capital_base]))
                     current_position.remove(item_position)
@@ -104,6 +122,6 @@ def start_bp():
 
 
 if __name__ == "__main__":
-    f_utils = FileUtils("bp_result.txt", "a+")
+    f_utils = FileUtils("bp_result1_2.txt", "a+")
     db_manager_tk = DBManager("tk_details")
     start_bp()

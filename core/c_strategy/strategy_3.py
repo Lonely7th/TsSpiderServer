@@ -35,6 +35,16 @@ class TsStrategy3:
                         return 1
         return -1
 
+    # 排除一些虚假信号
+    def get_result2(self, ticker):
+        if isinstance(ticker, tkWMacdBean) and len(ticker.get_wmacd_list()) > 30:
+            if ticker.get_wmacd_list()[-1] > 0 >= ticker.get_wmacd_list()[-2]:
+                if 0.1 > ticker.get_diff_list()[-1] > 0:
+                    if np.mean(ticker.get_tur_list()[-5:-1]) < ticker.get_tur_list()[-1]:
+                        if ticker.get_wmacd_list()[-3] < 0 and ticker.get_wmacd_list()[-4] < 0 and ticker.get_wmacd_list()[-5] < 0:
+                            return 1
+        return -1
+
     def get_buy_list(self, date):
         code_list = self.db_manager_wm.get_code_list()
         buy_list = list()
@@ -57,7 +67,7 @@ class TsStrategy3:
                 # 创建wmacd实体
                 tk_bean = tkWMacdBean(code, price_list, wmacd_list, diff_list, dea_list, tur_list, highest_list,
                                       open_list)
-                if self.get_result(tk_bean) == 1:
+                if self.get_result2(tk_bean) == 1:
                     buy_list.append(code)
             except Exception as e:
                 continue
