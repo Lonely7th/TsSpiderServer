@@ -44,7 +44,7 @@ def fun_buy(buy_list, date):
         if open_price != 0 and not np.isnan(open_price):
             amount = int(p_stage / open_price / 100) * 100
             if amount >= 100:
-                item_position = [code, open_price, amount]
+                item_position = [code, open_price, amount, date]
                 current_position.append(item_position)
                 capital_base -= open_price * amount
                 # 保存开单记录
@@ -60,7 +60,7 @@ def fun_sell(date):
             if close_price != 0:
                 profit_rate = (close_price - item_position[1]) / item_position[1]  # 计算收益率
                 capital_base += close_price * item_position[2]
-                f_utils.insert_line("sell->" + json.dumps([item_position[0], str(round(profit_rate * 100, 2))+"%", capital_base]))
+                f_utils.insert_line("sell->" + json.dumps([item_position[0], str(round(profit_rate * 100, 2)) + "%", capital_base]))
                 current_position.remove(item_position)
         # 统计历史数据
         history_capital.append(capital_base)
@@ -122,6 +122,6 @@ def start_bp():
 
 
 if __name__ == "__main__":
-    f_utils = FileUtils("bp_result1_2.txt", "a+")
+    f_utils = FileUtils("bp_result.txt", "a+")
     db_manager_tk = DBManager("tk_details")
     start_bp()
