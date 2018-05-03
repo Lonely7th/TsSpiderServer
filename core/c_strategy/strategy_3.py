@@ -112,5 +112,5 @@ class TsStrategy3:
 
 if __name__ == "__main__":
     st3 = TsStrategy3()
-    # for item in date_range("2018-01-01", str(datetime.datetime.now().date())):
-    #     st3.update_redis(item)
+    for item in date_range("2018-01-01", str(datetime.datetime.now().date())):
+        st3.update_redis(item)
