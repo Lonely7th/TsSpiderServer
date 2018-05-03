@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-__title__ = '交易策略03'
+__title__ = '交易策略03-增加资金管理和风险控制'
 __author__ = 'JN Zhang'
-__mtime__ = '2018/4/6'
+__mtime__ = '2018/5/3'
 """
 import datetime
 import numpy as np
@@ -37,15 +37,6 @@ class TsStrategy3:
 
     # 排除一些虚假信号
     def get_result2(self, ticker):
-        if isinstance(ticker, tkWMacdBean) and len(ticker.get_wmacd_list()) > 30:
-            if ticker.get_wmacd_list()[-1] > 0 >= ticker.get_wmacd_list()[-2]:
-                if 0.1 > ticker.get_diff_list()[-1] > 0:
-                    if np.mean(ticker.get_tur_list()[-5:-1]) < ticker.get_tur_list()[-1]:
-                        if ticker.get_wmacd_list()[-3] < 0 and ticker.get_wmacd_list()[-4] < 0 and ticker.get_wmacd_list()[-5] < 0:
-                            return 1
-        return -1
-
-    def get_result3(self, ticker):
         if isinstance(ticker, tkWMacdBean) and len(ticker.get_wmacd_list()) > 30:
             if ticker.get_wmacd_list()[-1] > 0 >= ticker.get_wmacd_list()[-2]:
                 if 0.1 > ticker.get_diff_list()[-1] > 0:
