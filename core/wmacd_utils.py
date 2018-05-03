@@ -113,5 +113,5 @@ class WmacdUtils:
 
 if __name__ == "__main__":
     wu = WmacdUtils()
-    wu.init_w_time()
-    # wu.update_w_macd()
+    # wu.init_w_time()
+    wu.update_w_macd()
