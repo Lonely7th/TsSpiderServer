@@ -112,7 +112,7 @@ def start_bp():
         cur_date = date_list[index]
         print(cur_date)
         if datetime.datetime.strptime(cur_date, "%Y-%m-%d").weekday() == 0:
-            buy_list = st3.get_buy_list(date_list[index-3])
+            buy_list = st3.get_buy_list(cur_date)
             if buy_list:
                 fun_buy(buy_list, cur_date)
         else:
@@ -122,6 +122,6 @@ def start_bp():
 
 
 if __name__ == "__main__":
-    f_utils = FileUtils("bp_result.txt", "a+")
+    f_utils = FileUtils("bp_result2_1.txt", "a+")
     db_manager_tk = DBManager("tk_details")
     start_bp()

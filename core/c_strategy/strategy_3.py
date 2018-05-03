@@ -58,7 +58,7 @@ class TsStrategy3:
                 # 获取wmacd数据
                 tk_details = self.db_manager_wm.find_by_key({"code": code})[0]
                 for tk_item in [x for x in tk_details["price_list"] if x["close_price"] != 0]:
-                    if time_cmp(str(date), tk_item["frist_date"]):
+                    if time_cmp(str(date), tk_item["date_list"][-2]):
                         price_list.append(tk_item["close_price"])
                         tur_list.append(tk_item["total_volume"])
                         highest_list.append(tk_item["max_price"])
