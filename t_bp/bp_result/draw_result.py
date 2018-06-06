@@ -81,7 +81,7 @@ def draw_w_profit_bar(file):
 
 
 if __name__ == "__main__":
-    __file = open(base_path + "bp_result1_2.txt", "r")
-    # draw_profit(__file)
+    __file = open(base_path + "bp_result3_1.txt", "r")
+    draw_profit(__file)
     # draw_profit_bar(__file)
-    draw_w_profit_bar(__file)
+    # draw_w_profit_bar(__file)
