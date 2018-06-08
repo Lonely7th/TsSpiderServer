@@ -90,3 +90,10 @@ class DBManager:
         根据ID删除，同样注意id值的格式
         """
         return self.table.delete_one({'_id': ObjectId(post_id)})
+
+    def get_code_list_02(self):
+        # 获取股票代码列表(sz格式)
+        return self.table.find({}, {"ticker": 1}, no_cursor_timeout=True)
+
+    def find_one_by_key(self, request={}):
+        return self.table.find_one(request)
