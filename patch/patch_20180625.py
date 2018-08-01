@@ -13,7 +13,7 @@ from core.wmacd_utils import WmacdUtils
 if __name__ == "__main__":
     # 恢复20180525的数据
     wu = WmacdUtils()
-    wu.update_w_macd("2018-06-23")
+    wu.update_w_macd("2018-07-21")
     # 重新计算strategy_3
     st3 = TsStrategy3()
-    st3.update_redis("2018-06-23")
+    st3.update_redis("2018-07-21")

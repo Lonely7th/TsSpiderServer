@@ -45,6 +45,14 @@ def fun_wm_data(str_query):
     return result_json
 
 
+def fun_version():
+    result_json = {"code": "200", "data": ""}
+    rm = RedisManager()
+    result = rm.get_data("tk_version")
+    result_json["data"] = str(result)
+    return result_json
+
+
 def myapp(environ, start_response):
     str_query = str(environ["QUERY_STRING"])
     script_filename = str(environ["SCRIPT_FILENAME"])
@@ -54,6 +62,10 @@ def myapp(environ, start_response):
         return [json.dumps(__result)]
     elif script_filename.split("/")[-1] == "wmdata":
         __result = fun_wm_data(str_query)
+        start_response("200 OK", [('Content-Type', 'text/plain')])
+        return [json.dumps(__result)]
+    elif script_filename.split("/")[-1] == "tk_version":
+        __result = fun_version()
         start_response("200 OK", [('Content-Type', 'text/plain')])
         return [json.dumps(__result)]
     else:
