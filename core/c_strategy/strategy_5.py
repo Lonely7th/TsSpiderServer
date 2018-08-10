@@ -10,9 +10,7 @@ import numpy as np
 
 from bean.account_bean import AccountBean
 from bean.order_bean import OrderBean
-from core.c_strategy.strategy_3 import TsStrategy3
-from core.c_strategy.strategy_3_f import TsStrategy3f
-from core.c_strategy.strategy_5_f import TsStrategy5f
+from core.c_strategy.strategy_6 import TsStrategy6
 from mongo_db.mongodb_manager import DBManager
 
 
@@ -30,10 +28,10 @@ def get_cur_values(code, date, key):
 
 
 if __name__ == "__main__":
-    st5 = TsStrategy5f()
+    st5 = TsStrategy6()
     db_manager_tk = DBManager("fcr_details")
     account = AccountBean()
-    date_list = date_range("2018-01-01", "2018-07-31")
+    date_list = date_range("2017-01-01", "2017-12-31")
     for date in date_list:
         if datetime.datetime.strptime(date, "%Y-%m-%d").weekday() == 0:
             buy_list = st5.get_buy_list(date)
