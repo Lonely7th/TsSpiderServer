@@ -130,10 +130,9 @@ def start_bp():
     st3 = TsStrategy3()
     history_capital.append(capital_base)
     # 初始化时间轴
-    date_list = date_range("2016-01-04", "2016-12-31")
+    date_list = date_range("2017-01-01", "2017-12-31")
     for index in range(len(date_list)):
         cur_date = date_list[index]
-        print(cur_date)
         fun_sell(cur_date)
         if datetime.datetime.strptime(cur_date, "%Y-%m-%d").weekday() == 0:
             buy_list = st3.get_buy_list(cur_date)

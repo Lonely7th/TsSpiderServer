@@ -13,11 +13,26 @@ class OrderBean(object):
         self.ticker = ticker
         self.amount = amount
 
-    def get_date(self):
-        return self.date
+    @property
+    def date(self):
+        return self._date
 
-    def get_ticker(self):
-        return self.ticker
+    @property
+    def ticker(self):
+        return self._ticker
 
-    def get_amount(self):
-        return self.amount
+    @property
+    def amount(self):
+        return int(self._amount)
+
+    @date.setter
+    def date(self, value):
+        self._date = value
+
+    @ticker.setter
+    def ticker(self, value):
+        self._ticker = value
+
+    @amount.setter
+    def amount(self, value):
+        self._amount = value
