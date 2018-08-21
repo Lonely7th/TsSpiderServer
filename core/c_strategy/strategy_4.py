@@ -108,6 +108,9 @@ class EmaManager:
         plt.grid(True)
         plt.show()
 
+    def fun_get_strategy(self):
+        pass
+
 
 if __name__ == "__main__":
     code_m = EmaManager()

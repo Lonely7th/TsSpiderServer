@@ -5,3 +5,7 @@ __title__ = ''
 __author__ = 'JN Zhang'
 __mtime__ = '2018/8/10'
 """
+
+
+if __name__ == "__main__":
+    pass
