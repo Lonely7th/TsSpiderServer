@@ -40,6 +40,9 @@ class DBManager:
     def push_one(self, where, push):
         return self.table.update_one(where, {"$push": push})
 
+    def add_futures_item(self, code, data_item):
+        return self.table.update_one({'code': code}, {"$push": {"data_list": data_item}})
+
     def add_tk_item(self, tk_code, price_item):
         """
         向详情列表中插入一条数据
