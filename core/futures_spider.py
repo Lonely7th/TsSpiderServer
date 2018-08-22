@@ -21,7 +21,7 @@ class FuturesSpider:
 
     def init_table(self):
         for item in symbol_list:
-            self.dm.add_one({"code": item.split("/")[0], "symbol": item.split("/")[1], "data_list": []})
+            self.dm.add_one({"code": item.split("/")[0], "symbol": item.split("/")[1], "details": []})
 
     def start_crawl(self):
         for symbol in symbol_list:
@@ -32,8 +32,7 @@ class FuturesSpider:
             for tries in range(max_try):
                 try:
                     content = requests.get(url)
-                    print(content.content)
-                    self.parse_pager(content.content, symbol)
+                    self.parse_pager(content.content, symbol.split("/")[0])
                     break
                 except Exception:
                     if tries < (max_try - 1):
@@ -42,22 +41,21 @@ class FuturesSpider:
                     else:
                         print(symbol, "fail")
 
-    def parse_pager(self, content, symbol):
-        timer_list = [x["date"] for x in self.dm.find_one_by_key({"symbol": symbol})["details"]]
+    def parse_pager(self, content, code):
+        timer_list = [x["date"] for x in self.dm.find_one_by_key({"code": code})["details"]]
         data = json.loads(content)
-        print(data)
         for item in data:
             __dict = {
                 "date": item[0],
-                "code": item[1],
-                "open": item[2],
-                "high": item[3],
-                "low": item[4],
+                "open": item[1],
+                "high": item[2],
+                "low": item[3],
+                "close": item[4],
                 "count": item[5]
             }
             if __dict["date"] not in timer_list:
-                self.dm.add_futures_item(symbol, __dict)
-        print(symbol, "success")
+                self.dm.add_futures_item(code, __dict)
+        print(code, "success")
 
 
 if __name__ == '__main__':

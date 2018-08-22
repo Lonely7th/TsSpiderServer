@@ -41,7 +41,7 @@ class DBManager:
         return self.table.update_one(where, {"$push": push})
 
     def add_futures_item(self, code, data_item):
-        return self.table.update_one({'code': code}, {"$push": {"data_list": data_item}})
+        return self.table.update_one({'code': code}, {"$push": {"details": data_item}})
 
     def add_tk_item(self, tk_code, price_item):
         """
