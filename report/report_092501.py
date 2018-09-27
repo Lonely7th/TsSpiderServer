@@ -21,10 +21,8 @@ if __name__ == "__main__":
         print(code)
         tk_data = db_manager_wm.find_by_key({"code": code})[0]
         colse_list = [x["close"] for x in tk_data["price_list"] if x["close"] != 0]
-        print(colse_list)
-    # 执行判断逻辑
-    for index in range(period, len(colse_list)):
-        print(index)
-    # 统计结果
-    # 绘图
-    pass
+        # 执行判断逻辑
+        for index in range(len(colse_list)):
+            print(index)
+        # 统计结果
+        # 绘图
