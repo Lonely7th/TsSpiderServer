@@ -8,8 +8,6 @@
 
 4.配置Nginx和数据接口
 
-源码下载地址：[https://github.com/Lonely7th/TsSpiderServer](https://github.com/Lonely7th/TsSpiderServer)
-
 # 1.定时抓取和解析数据
 
 这次我们抓取的目标是网易财经的股票板块，我们首先分析一下链接http://quotes.money.163.com/trade/lsjysj_603088.html?year=2018&season=1。按照链接的格式，我们拼接好股票代码、年份和季度：
